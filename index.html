@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analog Clock</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    #clock {
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      border: 2px solid black;
+      position: relative;
+      background-color:grey;
+    }
+    .num1 {
+      position: absolute;
+      top: 40px;
+      left: 360px;
+      font-size: 50px;
+      font-weight: 600;
+    }
+    .num2 {
+      position: absolute;
+      top: 120px;
+      left: 430px;
+      font-size: 50px;
+      font-weight: 600;
+    }
+    .num3{
+      position: absolute;
+      top: 220px;
+      left: 460px;
+      font-size: 50px;
+      font-weight: 600;
+    }
+    .num4 {
+      position: absolute;
+      bottom: 110px;
+      left: 430px;
+      font-size: 50px;
+      font-weight: 600;
+    }
+.num5 {
+      position: absolute;
+      bottom: 30px;
+      left: 340px;
+      font-size: 50px;
+      font-weight: 600;
+    }
+    .num6 {
+      position: absolute;
+      bottom: 6px;
+      left: 230px;
+      font-size: 50px;
+      font-weight: 600;
+    }
+    .num7 {
+      position: absolute;
+      bottom: 30px;
+      left: 130px;
+      font-size: 50px;
+      font-weight: 600;
+    }
+    .num8 {
+      position: absolute;
+      bottom: 110px;
+      left: 45px;
+      font-size: 50px;
+      font-weight: 600;
+    }
+    .num9 {
+      position: absolute;
+      bottom: 220px;
+      left: 20px;
+      font-size: 50px;
+      font-weight: 600;
+    }
+    .num10 {
+      position: absolute;
+      top: 125px;
+      left: 30px;
+      font-size: 50px;
+      font-weight: 600;
+    }
+   .num11 {
+      position: absolute;
+      top: 40px;
+      left: 100px;
+      font-size: 50px;
+      font-weight: 600;
+    }
+    .num12 {
+      position: absolute;
+      top: 10px;
+      left: 220px;
+      font-size: 50px;
+      font-weight: 600;
+    }
+    .dot{
+      position: absolute;
+      font-size: 150px;
+      font-weight: bold;
+      top:125px;
+      left:235px;
+   }
+   .hand {
+      background-color: black;
+      position: absolute;
+      transform-origin: bottom center;
+      transform: rotate(90deg);
+    }
+    #hour {
+      width: 6px;
+      height: 150px;
+      left:240px;
+      top:100px;
+    }
+    #minute {
+      width: 4px;
+      height: 180px;
+      left:250px;
+      top:70px;
+      background-color: black;
+    }
+    #second {
+      width: 2px;
+      height:210px;
+      background-color: red;
+      top:40px;
+      left:250px;
+    }
+    
+  </style>
+</head>
+<body>
+  <div id="clock">
+    <div id="hour" class="hand"></div>
+    <div id="minute" class="hand"></div>
+    <div id="second" class="hand"></div>
+    <div class="dot">.</div>
+    <div class="num12" >12</div>
+    <div class="num1" >1</div>
+    <div class="num2" >2</div>
+    <div class="num3" >3</div>
+    <div class="num4" >4</div>
+    <div class="num5" >5</div>
+    <div class="num6" >6</div>
+    <div class="num7" >7</div>
+    <div class="num8" >8</div>
+    <div class="num9" >9</div>
+    <div class="num10" >10</div>
+    <div class="num11" >11</div>
+  </div>
+  <script>
+    function Clock() 
+    {
+        setInterval(
+            ()=>{
+        
+      const hours = new Date().getHours() % 12;
+      const minutes = new Date().getMinutes();
+      const seconds = new Date().getSeconds();
+
+      const hour= document.getElementById('hour');
+      const min = document.getElementById('minute');
+      const sec = document.getElementById('second');
+
+      const hourDegrees = (hours * 30) + (0.5 * minutes);
+      const minuteDegrees = (minutes * 6) + (0.1 * seconds);
+      const secondDegrees = seconds * 6;
+
+      hour.style.transform = `rotate(${hourDegrees}deg)`;
+      min.style.transform = `rotate(${minuteDegrees}deg)`;
+      sec.style.transform = `rotate(${secondDegrees}deg)`;
+            },1000
+            )
+    }
+
+    Clock();
+  </script>
+</body>
+</html>
